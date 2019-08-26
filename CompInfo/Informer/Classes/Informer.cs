@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using Microsoft.VisualBasic.Devices;
 
@@ -73,12 +74,18 @@ namespace Informer
             Console.WriteLine(" InstalledUICulture:    {0, 15} Mbytes",
                 ci.InstalledUICulture);
         } // Информация по ОС
+        public string GetCurrentMethodName()
+        {
+            StackTrace st = new StackTrace();
+            StackFrame sf = st.GetFrame(1);
+            return sf.GetMethod().Name;
+        }
     }
     class DeliveredInformer : Informer
     {
         public override void DiskSpaceInfo()
         {
-            Console.WriteLine("Вызов метода из наследованого класса!");
+            Console.WriteLine("Вызов метода {0} в наследованном классе {1}", GetCurrentMethodName(), this.GetType().Name);
             base.DiskSpaceInfo();
         }
     }
