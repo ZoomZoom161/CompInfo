@@ -80,12 +80,16 @@ namespace Informer
             StackFrame sf = st.GetFrame(1);
             return sf.GetMethod().Name;
         }
+        public string GetCurrentClassName()
+        {
+            return this.GetType().Name;
+        }
     }
     class DeliveredInformer : Informer
     {
         public override void DiskSpaceInfo()
         {
-            Console.WriteLine("Вызов метода {0} в наследованном классе {1}", GetCurrentMethodName(), this.GetType().Name);
+            Console.WriteLine("Вызов метода {0} в наследованном классе {1}", GetCurrentMethodName(), GetCurrentClassName());
             base.DiskSpaceInfo();
         }
     }
