@@ -7,6 +7,11 @@ namespace Informer
 {
     class Informer : IInformer
     {
+        public Informer()
+        {
+            Console.WriteLine("Вызов конструктора {0} класса {1}", GetCurrentMethodName(), GetCurrentClassName());
+        }
+
         virtual public void DiskSpaceInfo()
         {
             DriveInfo[] allDrives = DriveInfo.GetDrives();
@@ -67,11 +72,11 @@ namespace Informer
         public void OSInfo()
         {
             ComputerInfo ci = new ComputerInfo();
-            Console.WriteLine(" OS Platform:           {0, 15} Mbytes",
+            Console.WriteLine(" OS Platform:           {0, 15} ",
                 ci.OSPlatform);
-            Console.WriteLine(" OS Version:            {0, 15} Mbytes",
+            Console.WriteLine(" OS Version:            {0, 15} ",
                 ci.OSVersion);
-            Console.WriteLine(" InstalledUICulture:    {0, 15} Mbytes",
+            Console.WriteLine(" InstalledUICulture:    {0, 15} ",
                 ci.InstalledUICulture);
         } // Информация по ОС
         public string GetCurrentMethodName()
@@ -87,9 +92,13 @@ namespace Informer
     }
     class DeliveredInformer : Informer
     {
+        public DeliveredInformer()
+        {
+            Console.WriteLine("Вызов конструктора {0} класса {1}", GetCurrentMethodName(), GetCurrentClassName());
+        }
+
         public override void DiskSpaceInfo()
         {
-            Console.WriteLine("Вызов метода {0} в наследованном классе {1}", GetCurrentMethodName(), GetCurrentClassName());
             base.DiskSpaceInfo();
         }
     }
