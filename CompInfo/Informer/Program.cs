@@ -11,7 +11,7 @@ namespace Informer
             var inf2 = new DeliveredInformer();
             inf2.DiskSpaceInfo();
             inf2.OSInfo();
-            Console.ReadLine();
+            //Console.ReadLine();
         }
     }
 }
